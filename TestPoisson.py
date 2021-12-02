@@ -1,22 +1,21 @@
 import unittest
 import math
-from poisson import Poisson
+from distributions.probability.poisson import Poisson
 
 class TestPoisson(unittest.TestCase): 
     @classmethod
     def setUpClass(cls):
-        print('setupclass')
+        pass
     
     @classmethod
     def tearDownClass(cls):
-        print('teardownclass')
+        pass
     
     def setUp(self):
         self.pois1 = Poisson()
-        print('setup')
     
     def tearDown(self):
-        print('teardown')
+        pass
 
     def test_pdf(self):
         self.assertRaises(ValueError, self.pois1.pdf, 3, -1)
@@ -39,4 +38,5 @@ class TestPoisson(unittest.TestCase):
         self.assertEqual(self.pois1.quantile(1, 2), math.inf)
         self.assertEqual(self.pois1.quantile(0.5, 2), 2)
     
-
+if __name__ == "__main__":
+    unittest.main()

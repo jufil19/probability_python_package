@@ -1,22 +1,22 @@
 import unittest
 import math
-from exponential import Exponential
+from distributions.probability.exponential import Exponential
 
 class TestExponential(unittest.TestCase): 
     @classmethod
     def setUpClass(cls):
-        print('setupclass')
+        pass
     
     @classmethod
     def tearDownClass(cls):
-        print('teardownclass')
+        pass
     
     def setUp(self):
         self.exp1 = Exponential()
-        print('setup')
+
     
     def tearDown(self):
-        print('teardown')
+        pass
 
     def test_pdf(self):
         self.assertRaises(ValueError, self.exp1.pdf, 3, -1)
@@ -39,4 +39,8 @@ class TestExponential(unittest.TestCase):
         self.assertEqual(self.exp1.quantile(1, 2), math.inf)
         self.assertAlmostEqual(self.exp1.quantile(0.5, 2), 0.3465736)
     
+
+
+if __name__ == "__main__":
+    unittest.main()
 

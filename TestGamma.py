@@ -1,22 +1,21 @@
 import unittest
 import math
-from gamma import Gamma
+from distributions.probability.gamma import Gamma
 
 class TestGamma(unittest.TestCase): 
     @classmethod
     def setUpClass(cls):
-        print('setupclass')
+        pass
     
     @classmethod
     def tearDownClass(cls):
-        print('teardownclass')
+        pass
     
     def setUp(self):
         self.gamma1 = Gamma()
-        print('setup')
     
     def tearDown(self):
-        print('teardown')
+        pass
 
     def test_pdf(self):
         self.assertRaises(ValueError, self.gamma1.pdf, 3, 2, -1)
@@ -38,5 +37,8 @@ class TestGamma(unittest.TestCase):
         self.assertEqual(self.gamma1.quantile(0, 2, 3), 0)
         self.assertEqual(self.gamma1.quantile(1, 2, 3), math.inf)
         self.assertAlmostEqual(self.gamma1.quantile(0.5, 2, 2), 0.8391735)
+
+if __name__ == "__main__":
+    unittest.main()
     
 

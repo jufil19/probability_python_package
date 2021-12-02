@@ -1,4 +1,4 @@
-from distributions.estimation.mle import calculate_mle
+from .mle import calculate_mle
 from scipy.stats import gamma, poisson
 import scipy.stats as stats
 import matplotlib.pyplot as plt
