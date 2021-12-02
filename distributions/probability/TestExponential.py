@@ -1,6 +1,6 @@
 import unittest
 import math
-import exponential as exp
+from exponential import Exponential
 
 class TestExponential(unittest.TestCase): 
     @classmethod
@@ -13,9 +13,10 @@ class TestExponential(unittest.TestCase):
     
     def setUp(self):
         self.exp1 = Exponential()
+        print('setup')
     
     def tearDown(self):
-        pass
+        print('teardown')
 
     def test_pdf(self):
         self.assertRaises(ValueError, self.exp1.pdf, 3, -1)
