@@ -21,7 +21,7 @@ class Gamma:
 
         if self.lam < 0 or self.alpha < 0:
             print("The rate and shape parameter must be positive")
-            return
+            raise ValueError
         try:
             if self.x >= 0:
                 pdf = ((self.x**(self.alpha - 1))*math.exp(-self.lam*self.x)*(self.lam**(self.alpha)))/math.gamma(self.alpha)
@@ -47,7 +47,7 @@ class Gamma:
         
         if self.lam < 0 or self.alpha < 0:
             print("The rate and the shape parameter must be positive")
-            return
+            raise ValueError
 
         try:
             if self.x > 0:
@@ -76,12 +76,13 @@ class Gamma:
         
         if self.lam < 0 or self.alpha < 0:
             print("The rate and shape parameter must be positive")
-            return
+            raise ValueError
         try:
             if 0 <= self.p <= 1:
                 quantile = gamma.ppf(self.p, self.alpha, scale = 1/self.lam)
                 return quantile
             else:
                 print("The probability must be between 0 and 1")
+                raise ValueError
         except TypeError:
             print("The arguments passed should be numerical")
