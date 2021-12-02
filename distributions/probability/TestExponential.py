@@ -35,7 +35,7 @@ class TestExponential(unittest.TestCase):
     def test_quantile(self):
         self.assertRaises(ValueError, self.exp1.quantile, 0.5, -1)
         self.assertRaises(TypeError, self.exp1.quantile('0.5', 1))
-        self.assertEqual(self.exp1.quantile(0, 2))
+        self.assertEqual(self.exp1.quantile(0, 2), 0)
         self.assertEqual(self.exp1.quantile(1, 2), math.inf)
         self.assertAlmostEqual(self.exp1.quantile(0.5, 2), 0.3465736)
     

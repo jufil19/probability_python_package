@@ -57,7 +57,7 @@ class Poisson:
             if self.lam < 0:
                 print("The rate must be positive")
                 raise ValueError
-            if self.x > 0:
+            if self.x >= 0:
                 cdf = 0
                 x = math.floor(self.x)
                 for i in range(0, x + 1):
