@@ -1,5 +1,5 @@
 import math
-from distributions.probability.gamma import Gamma
+from .gamma import Gamma
 class Exponential(Gamma):
     """Information pertaining to the exponential distribution. Inherits from gamma since it is a special case of gamma with alpha = 1. 
     """

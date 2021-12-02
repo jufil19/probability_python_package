@@ -3,18 +3,18 @@ import pandas as pd
 
 
 def summary(data):
-    """Prints the minumum, maximum, mean, and variance of the provided data. 
+    """Returns the minumum, maximum, mean, and variance of the provided data. 
 
     Args:
         data (list): List of observations
 
     Returns:
-        None
+        dictionary with minimum value, maximum value, variance, and mean. 
     """
-    print(f"Minimum value: {min(data)}")
-    print(f"Maximum value: {max(data)}")
-    print(f"Variance: {statistics.variance(data)}")
-    print(f"Mean: {statistics.mean(data)}")
+    variance = statistics.variance(data)
+    mean = statistics.mean(data)
+
+    return {"Min": min(data), "Max":max(data), "Variance":variance, "Mean": mean}
 
 
 def contains_all_ints(data):

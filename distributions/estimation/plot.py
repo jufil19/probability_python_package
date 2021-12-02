@@ -1,9 +1,9 @@
-from distributions.estimation.mle import calculate_mle
 from scipy.stats import gamma, poisson
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from .mle import calculate_mle
 
 def hist(distribution, data):
     """Plots a histogram of empirical data and overlays a curve of the density function for the distribution passed as an argument
