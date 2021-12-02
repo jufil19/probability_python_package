@@ -19,10 +19,11 @@ class Gamma:
         self.lam = lam
         self.alpha = alpha
 
-        if self.lam < 0 or self.alpha < 0:
-            print("The rate and shape parameter must be positive")
-            raise ValueError
+
         try:
+            if self.lam < 0 or self.alpha < 0:
+                print("The rate and shape parameter must be positive")
+                raise ValueError
             if self.x >= 0:
                 pdf = ((self.x**(self.alpha - 1))*math.exp(-self.lam*self.x)*(self.lam**(self.alpha)))/math.gamma(self.alpha)
                 return(pdf)
@@ -45,11 +46,12 @@ class Gamma:
         self.lam = lam
         self.alpha = alpha
         
-        if self.lam < 0 or self.alpha < 0:
-            print("The rate and the shape parameter must be positive")
-            raise ValueError
+        
 
         try:
+            if self.lam < 0 or self.alpha < 0:
+                print("The rate and the shape parameter must be positive")
+                raise ValueError
             if self.x > 0:
                 cdf = gamma.cdf(self.x, self.alpha, scale = 1/self.lam)
                 return cdf
@@ -74,10 +76,12 @@ class Gamma:
         self.lam = lam
         self.alpha = alpha
         
-        if self.lam < 0 or self.alpha < 0:
-            print("The rate and shape parameter must be positive")
-            raise ValueError
+        
         try:
+            if self.lam < 0 or self.alpha < 0:
+                print("The rate and shape parameter must be positive")
+                raise ValueError
+
             if 0 <= self.p <= 1:
                 quantile = gamma.ppf(self.p, self.alpha, scale = 1/self.lam)
                 return quantile
