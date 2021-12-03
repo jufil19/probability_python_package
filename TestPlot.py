@@ -1,5 +1,6 @@
 import unittest
 import pandas as pd
+import numpy
 from distributions.estimation import plot 
 
 class TestPlot(unittest.TestCase):
@@ -25,14 +26,26 @@ class TestPlot(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_hits(self):
-        pass
-        
+    def test_hist(self):
+        self.assertIsInstance(plot.hist('gamma',self.gamma), numpy.ndarray)
+        self.assertIsNotNone(plot.hist('gamma',self.gamma))
+        self.assertGreater(len(plot.hist('gamma',self.gamma)), 0)
+        self.assertGreaterEqual(min(plot.hist('exponential',self.exp)), 0)
+        self.assertGreaterEqual(min(plot.hist('poisson',self.pois)), 0)
+
     def test_qqplot(self):
-        pass
+        self.assertIsInstance(plot.qqplot('gamma',self.gamma)[0][0], numpy.ndarray)
+        self.assertIsInstance(plot.qqplot('gamma',self.gamma)[0][1], numpy.ndarray)
+        self.assertGreaterEqual(min(plot.qqplot('exponential',self.exp)[0][0]), 0)
+        self.assertGreaterEqual(min(plot.qqplot('poisson',self.pois)[0][0]), 0)
+        self.assertGreaterEqual(min(plot.qqplot('gamma',self.gamma)[0][0]), 0)
         
     def test_boxplot(self):
-        pass
+        self.assertIsInstance(plot.boxplot(self.gamma), dict)
+        self.assertIsInstance(plot.boxplot(self.exp), dict)
+        self.assertIsInstance(plot.boxplot(self.pois), dict)
+        self.assertGreater(len(plot.boxplot(self.gamma)), 0)
+        self.assertGreater(len(plot.boxplot(self.exp)), 0)
 
 if __name__ == "__main__":
     unittest.main()

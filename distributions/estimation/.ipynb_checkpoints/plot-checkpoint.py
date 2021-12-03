@@ -31,6 +31,8 @@ def hist(distribution, data):
         x_values = np.arange(min(data), max(data), 1)
         plt.plot(x_values, poisson.pmf(x_values, mu = mle), 'r-', lw = 3, alpha = 0.6, label = f'poisson pmf with MLE = {mle:0.2}')
         plt.legend(loc = 'best', frameon = True)
+        
+    return x_values
 
 def qqplot(distribution, data):
     """Produces a QQ-plot of the quantiles for the distribution passed as an argument where its parameters are estimated using MLE
