@@ -16,23 +16,29 @@ class Poisson:
         self.x = x
         self.lam = lam
 
-        if self.lam < 0:
-            print("The rate must be positive")
-            return
+    
 
         try:
+            if self.lam < 0:
+                print("The rate must be positive")
+                raise ValueError
+            
             if self.x >= 0 and type(self.x) == int:
                 pdf = (self.lam**(self.x)*math.exp(-self.lam))/math.factorial(self.x)
-                
                 return pdf 
+           
             elif self.x < 0 and type(self.x) ==int:
                 return 0
+            
             elif type(self.x) != int:
                 print("The domain of the Poisson distribution is discrete, non-integer values return 0")
                 return 0
                 
         except TypeError:
             print("The arguments passed should be numerical")
+        
+        
+
     
     def cdf(self, x, lam):
         """Cumulative distribution function for the poisson distribution. 
@@ -45,22 +51,24 @@ class Poisson:
         self.x = x
         self.lam = lam
 
-        if self.lam < 0:
-            print("The rate must be positive")
-            return
+        
 
         try:
-            if self.x > 0:
+            if self.lam < 0:
+                print("The rate must be positive")
+                raise ValueError
+            if self.x >= 0:
                 cdf = 0
                 x = math.floor(self.x)
                 for i in range(0, x + 1):
                     cdf +=  Poisson.pdf(self, i, self.lam)
                 return cdf
             else:
-                
                 return 0
+        
         except TypeError:
             print("The arguments passed should be numerical")
+       
 
     
     def quantile(self, p, lam):
@@ -76,10 +84,10 @@ class Poisson:
         self.p = p
         self.lam = lam
         
-        if self.lam < 0:
-            print("The rate must be positive")
-            return
         try:
+            if self.lam < 0:
+                print("The rate must be positive")
+                raise ValueError
             if 0 <= self.p <= 1:
                 quantile = poisson.ppf(self.p, self.lam)
                 return quantile
