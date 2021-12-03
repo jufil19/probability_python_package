@@ -1,11 +1,11 @@
 import unittest
 
-from TestExponential import TestExponential
-from TestGamma import TestGamma
-from TestPoisson import TestPoisson
-from TestMle import TestMle
-from TestPlot import TestPlot
-from TestSummary import TestSummary 
+from test_files.TestExponential import TestExponential
+from test_files.TestGamma import TestGamma
+from test_files.TestPoisson import TestPoisson
+from test_files.TestMle import TestMle
+from test_files.TestPlot import TestPlot
+from test_files.TestSummary import TestSummary 
 
 def my_suite():
     suite = unittest.TestSuite()

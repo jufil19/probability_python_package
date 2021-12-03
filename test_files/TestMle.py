@@ -5,9 +5,9 @@ from distributions.estimation import mle
 class TestMle(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.expfile = 'exp_rate4.csv'
-        cls.gammafile = 'gamme_shape2_rate4.csv'
-        cls.poisfile = 'pois_rate4.csv'
+        cls.expfile = 'test_files/exp_rate4.csv'
+        cls.gammafile = 'test_files/gamme_shape2_rate4.csv'
+        cls.poisfile = 'test_files/pois_rate4.csv'
 
         exp = pd.read_csv(cls.expfile)
         cls.exp = exp.iloc[:, 0].tolist()
@@ -29,9 +29,9 @@ class TestMle(unittest.TestCase):
     def test_readData(self):
         self.assertEqual(mle.readData(self.__class__.expfile), self.__class__.exp)
         self.assertIsInstance(mle.readData(self.__class__.expfile), list)
-        self.assertRaises(FileNotFoundError, mle.readData, 'notafile.csv')
-        self.assertRaises(ValueError, mle.readData, 'hasnegs.csv')
-        self.assertRaises(ValueError, mle.readData, 'mulcols.csv')
+        self.assertRaises(FileNotFoundError, mle.readData, 'test_files/notafile.csv')
+        self.assertRaises(ValueError, mle.readData, 'test_files/hasnegs.csv')
+        self.assertRaises(ValueError, mle.readData, 'test_files/mulcols.csv')
 
     def test_setDistribution(self):
         self.assertEqual(mle.setDistribution('gamma'), 2)
