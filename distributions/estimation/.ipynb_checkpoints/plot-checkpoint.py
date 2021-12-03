@@ -1,9 +1,9 @@
-from distributions.estimation.mle import calculate_mle
 from scipy.stats import gamma, poisson
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from .mle import calculate_mle
 
 def hist(distribution, data):
     """Plots a histogram of empirical data and overlays a curve of the density function for the distribution passed as an argument
@@ -31,6 +31,8 @@ def hist(distribution, data):
         x_values = np.arange(min(data), max(data), 1)
         plt.plot(x_values, poisson.pmf(x_values, mu = mle), 'r-', lw = 3, alpha = 0.6, label = f'poisson pmf with MLE = {mle:0.2}')
         plt.legend(loc = 'best', frameon = True)
+        
+    return x_values
 
 def qqplot(distribution, data):
     """Produces a QQ-plot of the quantiles for the distribution passed as an argument where its parameters are estimated using MLE
