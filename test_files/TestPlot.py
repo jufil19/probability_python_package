@@ -6,9 +6,9 @@ from distributions.estimation import plot
 class TestPlot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.expfile = 'exp_rate4.csv'
-        cls.gammafile = 'gamme_shape2_rate4.csv'
-        cls.poisfile = 'pois_rate4.csv'
+        cls.expfile = 'test_files/exp_rate4.csv'
+        cls.gammafile = 'test_files/gamme_shape2_rate4.csv'
+        cls.poisfile = 'test_files/pois_rate4.csv'
 
         exp = pd.read_csv(cls.expfile)
         cls.exp = exp.iloc[:, 0].tolist()
