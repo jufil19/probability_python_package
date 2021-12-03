@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 from .mle import calculate_mle
+=======
+>>>>>>> subpackage2
 from scipy.stats import gamma, poisson
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from .mle import calculate_mle
 
 def hist(distribution, data):
     """Plots a histogram of empirical data and overlays a curve of the density function for the distribution passed as an argument
@@ -31,6 +35,8 @@ def hist(distribution, data):
         x_values = np.arange(min(data), max(data), 1)
         plt.plot(x_values, poisson.pmf(x_values, mu = mle), 'r-', lw = 3, alpha = 0.6, label = f'poisson pmf with MLE = {mle:0.2}')
         plt.legend(loc = 'best', frameon = True)
+        
+    return x_values
 
 def qqplot(distribution, data):
     """Produces a QQ-plot of the quantiles for the distribution passed as an argument where its parameters are estimated using MLE
@@ -45,16 +51,18 @@ def qqplot(distribution, data):
     mle = calculate_mle(distribution, data)
 
     if distribution == 'gamma':
-        stats.probplot(data, sparams = (mle[0], 0, mle[1]), dist='gamma', plot = plt) 
+        p = stats.probplot(data, sparams = (mle[0], 0, mle[1]), dist='gamma', plot = plt) 
         ax.set_title(f"QQ - Plot for gamma dist with shape parameter {mle[0]:0.2} and scale parameter 1/{mle[1]:0.2}")
     
     elif distribution == 'exponential':
-        stats.probplot(data, sparams = (mle, ), dist='expon', plot = plt) 
+        p = stats.probplot(data, sparams = (mle, ), dist='expon', plot = plt) 
         ax.set_title(f"QQ - Plot for exponential dist with rate parameter {mle:0.2}")
     
     else:
-        stats.probplot(data, sparams = (mle, ), dist='poisson', plot = plt) 
+        p = stats.probplot(data, sparams = (mle, ), dist='poisson', plot = plt) 
         ax.set_title(f"QQ - Plot for poisson dist with rate parameter {mle:0.2}")
+
+    return p
 
 def boxplot(data): 
     """Produces a box-and-whisker plot 
@@ -63,4 +71,4 @@ def boxplot(data):
         data (list or DataFrame): Values to be plotted
     """
     data = pd.DataFrame(data)
-    data.boxplot(grid = False)
+    return data.boxplot(grid = False, return_type = 'dict')
