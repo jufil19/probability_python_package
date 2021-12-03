@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 from distributions.estimation import summary
 
-class TestMle(unittest.TestCase):
+class TestSummary(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         pass
